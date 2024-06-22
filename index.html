@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbes irréguliés</title>
+</head>
+<body>
+    <script>
+        // Définir les listes
+        var list_date = ["1914-1918","1917","1933","1924","1936"];
+        var list_evenement = ["première guere mondiale","révolutions russe","hitler chacelier","Lenine au ciel","Front populaire"];
+
+        // Pour chaque liste, prendre 5 éléments aléatoirement
+        function getRandom(arr, n) {
+            var result = new Array(n),
+                len = arr.length,
+                taken = new Array(len);
+            if (n > len)
+                throw new RangeError("getRandom: more elements taken than available");
+            while (n--) {
+                var x = Math.floor(Math.random() * len);
+                result[n] = arr[x in taken ? taken[x] : x];
+                taken[x] = --len in taken ? taken[len] : len;
+            }
+            return result;
+        }
+
+        var date = getRandom(list_date, 2);
+        var evenement = getRandom(list_evenement, 2);
+
+        // Ajouter les éléments aléatoires à la page
+        document.write("<p>Date : " + date + "</p>");
+        document.write("<p>evenement : " +evenement + "</p>");
+    </script>
+    <style>
+        body {
+            background-color: rgb(25, 25, 25);
+            color: white;
+            text-align: center;
+        }
+    </style>
+    
+</body>
+</html>
